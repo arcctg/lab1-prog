@@ -9,7 +9,7 @@ public class IteratorConsumer {
         long endTime = startTime + (timeoutSeconds * 1000L);
         int count = 0;
 
-        System.out.println("Starting consumption for " + timeoutSeconds + " seconds...");
+        System.out.printf("Starting consumption for %d seconds...%n", timeoutSeconds);
 
         while (iterator.hasNext() && System.currentTimeMillis() < endTime) {
             T value = iterator.next();
@@ -17,6 +17,6 @@ public class IteratorConsumer {
             count++;
         }
 
-        System.out.println("Consumption finished. Processed " + count + " items.");
+        System.out.printf("Consumption finished. Processed %d items.%n", count);
     }
 }

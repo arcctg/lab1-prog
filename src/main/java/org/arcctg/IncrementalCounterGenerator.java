@@ -1,6 +1,7 @@
 package org.arcctg;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class IncrementalCounterGenerator implements Iterator<Integer> {
     private int currentValue;
@@ -16,9 +17,11 @@ public class IncrementalCounterGenerator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        int valueToReturn = currentValue;
-        currentValue++;
-        return valueToReturn;
+        if (hasNext()) {
+            return currentValue++;
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
     @Override
